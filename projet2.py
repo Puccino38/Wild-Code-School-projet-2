@@ -39,7 +39,35 @@ st.set_page_config(
 # :memo:
 
 # Changer le répertoire de travail pour qu'il corresponde à votre situation en local
-os.chdir("https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/")
+# os.chdir("https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/")
+
+# Liens bruts vers les fichiers sur GitHub
+file1_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/Best_movie_decade.csv"
+file2_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/donnees.csv"
+file3_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/Top_10_genres_global.csv"
+
+# Charger les fichiers CSV
+data1 = pd.read_csv(file1_url)
+data2 = pd.read_csv(file2_url)
+data3 = pd.read_csv(file3_url)
+
+# Liens bruts vers les images sur GitHub
+image1_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/cinema.jpg.webp"
+image2_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/claudette.png"
+image3_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/creuse.png"
+image4_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/film-clipart-film-negative-19.png"
+image5_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/florence.png"
+image6_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/image_accueil.png"
+image7_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/julien.png"
+
+# Charger les images
+image1 = Image.open(requests.get(image1_url, stream=True).raw)
+image2 = Image.open(requests.get(image2_url, stream=True).raw)
+image3 = Image.open(requests.get(image3_url, stream=True).raw)
+image4 = Image.open(requests.get(image1_url, stream=True).raw)
+image5 = Image.open(requests.get(image2_url, stream=True).raw)
+image6 = Image.open(requests.get(image3_url, stream=True).raw)
+image7 = Image.open(requests.get(image3_url, stream=True).raw)
 
 image = Image.open('cinema.jpg.webp')
 st.sidebar.image(image, use_column_width=True) #caption="Description de l'image"
