@@ -39,7 +39,7 @@ st.set_page_config(
 # :memo:
 
 # Changer le répertoire de travail pour qu'il corresponde à votre situation en local
-os.chdir("https://github.com/Puccino38/Wild-Code-School-projet-2.git")
+os.chdir("https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/")
 
 image = Image.open('cinema.jpg.webp')
 st.sidebar.image(image, use_column_width=True) #caption="Description de l'image"
