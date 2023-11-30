@@ -39,7 +39,7 @@ st.set_page_config(
 # :memo:
 
 # Changer le répertoire de travail pour qu'il corresponde à votre situation en local
-os.chdir(r"C:\Users\Julien\Documents\formation\projet_2\Streamlit")
+os.chdir("https://github.com/Puccino38/Wild-Code-School-projet-2/tree/main")
 
 image = Image.open('cinema.jpg.webp')
 st.sidebar.image(image, use_column_width=True) #caption="Description de l'image"
