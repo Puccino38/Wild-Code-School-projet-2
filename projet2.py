@@ -39,38 +39,10 @@ st.set_page_config(
 # :memo:
 
 # Changer le répertoire de travail pour qu'il corresponde à votre situation en local
-# os.chdir("https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/")
+# os.chdir(r"C:\Users\cbrun\Desktop\WCS\Streamlit")
 
-# Liens bruts vers les fichiers sur GitHub
-file1_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/Best_movie_decade.csv"
-file2_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/donnees.csv"
-file3_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/Top_10_genres_global.csv"
-
-# Charger les fichiers CSV
-data1 = pd.read_csv(file1_url)
-data2 = pd.read_csv(file2_url)
-data3 = pd.read_csv(file3_url)
-
-# Liens bruts vers les images sur GitHub
-image1_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/cinema.jpg.webp"
-image2_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/claudette.png"
-image3_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/creuse.png"
-image4_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/film-clipart-film-negative-19.png"
-image5_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/florence.png"
-image6_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/image_accueil.png"
-image7_url = "https://raw.githubusercontent.com/puccino38/Wild-code-school/Publication/julien.png"
-
-# Charger les images
-image1 = Image.open(requests.get(image1_url, stream=True).raw)
-image2 = Image.open(requests.get(image2_url, stream=True).raw)
-image3 = Image.open(requests.get(image3_url, stream=True).raw)
-image4 = Image.open(requests.get(image1_url, stream=True).raw)
-image5 = Image.open(requests.get(image2_url, stream=True).raw)
-image6 = Image.open(requests.get(image3_url, stream=True).raw)
-image7 = Image.open(requests.get(image3_url, stream=True).raw)
-
-#image = Image.open('cinema.jpg.webp')
-st.sidebar.image(image1, use_column_width=True) #caption="Description de l'image"
+image = Image.open('cinema.jpg.webp')
+st.sidebar.image(image, use_column_width=True) #caption="Description de l'image"
 
 # barre de navigation vertical
 st.sidebar.title("Sommaire")
@@ -108,8 +80,8 @@ if page == pages[0] :
     st.write(":email: Une rubrique d'**alerte** qui contient un formulaire pour vous inscrire à nos alertes")
 
 
-    #image = Image.open('image_accueil.png')
-    #st.image(image, caption='mosaique d\'affiche de fims')
+    image = Image.open('image_accueil.png')
+    st.image(image, caption='mosaique d\'affiche de fims')
 
 
     # Define the API key globally
@@ -192,9 +164,9 @@ elif page == pages[1] :
     col1.write("Pour aller encore plus loin, il demande de créer un moteur de recommandations de films qui à terme, enverra des notifications aux clients via Internet.")
     col1.write("Pour l’instant, aucun client n’a renseigné ses préférences, Nous sommes dans une situation de **cold start**. ")
 
-    # col2, affiche l'image
-    #image = Image.open('creuse.png')
-    #col2.image(image, use_column_width=True, caption='carte de france avec focus sur la creuse')
+     col2, affiche l'image
+     image = Image.open('creuse.png')
+     col2.image(image, use_column_width=True, caption='carte de france avec focus sur la creuse')
 
     # Afficher l'image avec la largeur spécifiée
     gif = "https://www.forum.arassocies.com/uploads/monthly_2022_01/178048511_Travoltasalledecine.gif.049a18b2b123c0170d165f2ee2a9499d.gif"
@@ -205,19 +177,19 @@ elif page == pages[1] :
     col1, col2 = st.columns(2)
 
     # Définir la largeur souhaitée de l'image gif
-    #image_width = 300
+    image_width = 300
 
     # Afficher l'image avec la largeur spécifiée
-    #gif = "https://www.forum.arassocies.com/uploads/monthly_2022_01/178048511_Travoltasalledecine.gif.049a18b2b123c0170d165f2ee2a9499d.gif"
-    #col1.image(gif, caption="Un cinema dans la Creuse", use_column_width=True)
-    # width=image_width)
+    gif = "https://www.forum.arassocies.com/uploads/monthly_2022_01/178048511_Travoltasalledecine.gif.049a18b2b123c0170d165f2ee2a9499d.gif"
+    col1.image(gif, caption="Un cinema dans la Creuse", use_column_width=True)
+    width=image_width)
 
     # declaration 2 colonnes
     col1, col2 = st.columns(2)
     
     # col2, affiche l'image
-    # image = Image.open('creuse.png')
-    col1.image(image3, use_column_width=True, caption='carte de france avec focus sur la creuse')
+    image = Image.open('creuse.png')
+    col1.image(image, use_column_width=True, caption='carte de france avec focus sur la creuse')
 
     st.write("\n")  # Ajoute un saut de ligne manuel
 
@@ -237,18 +209,18 @@ elif page == pages[1] :
 
     # col 1
     col1.write("Claudette")
-    # image = Image.open('claudette.png')
-    col1.image(image2, use_column_width=False) # , caption='Claudette'
+    image = Image.open('claudette.png')
+    col1.image(image, use_column_width=False) # , caption='Claudette'
 
     # col 2
     col2.write("Florence", align='center')
-    # image = Image.open('florence.png')
-    col2.image(image5, use_column_width=False) # , caption='Florence'
+    image = Image.open('florence.png')
+    col2.image(image, use_column_width=False) # , caption='Florence'
 
     # col 3
     col3.write("Julien", align='center')
-    # image = Image.open('julien.png')
-    col3.image(image7, use_column_width=False) # , caption='Julien'
+    image = Image.open('julien.png')
+    col3.image(image, use_column_width=False) # , caption='Julien'
 
 
 
@@ -272,9 +244,9 @@ elif page == pages[2]:
 
     # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     # bdd films unique
-    link1 = "df_imdb_filmUnik.csv"
+    link1 = "df_imdb_filmUnik.parquet"
     #link1 = "https://drive.google.com/file/d/1EZOyDpi_o7OXDQvpUjC9d9rEU_sl7HHi/view?usp=sharing"
-    df_imdb_filmUnik = pd.read_csv(link1)
+    df_imdb_filmUnik = pd.read_parquet(link1)
 
     st.write("Nous avons à notre disposition le dataset de films (imdb) qui contient des données sur les films. ")
     st.write("\n")  # Ajoute un saut de ligne manuel
@@ -295,64 +267,172 @@ elif page == pages[2]:
 
     # Options pour le menu déroulant
     options = ["", #option vide pour ne rien afficher
-            #"Nombre ce films par genre (type Movie)",
-            #"Durée moyenne Durée moyenne des films en fonction de leur date de sortie",
-            #"Nombre de films sortis par année de sortie",
-            #"Top 10 des réalisateurs les mieux cotés",
-            #"Top 10 des réalisateurs les plus productifs",
+            "Nombre ce films par genre (type Movie)",
+            "Durée moyenne Durée moyenne des films en fonction de leur date de sortie",
+            "Nombre de films sortis par année de sortie",
+            "Top 10 des réalisateurs les mieux cotés",
+            "Top 10 des réalisateurs les plus productifs",
             "Meilleur film par décennie",
             "Top 10 des films par genre",
             "Top 10 des genres les plus présents par décennie",
-            #"Acteurs, Actrices & Directeurs les plus présents"
+            "Acteurs, Actrices & Directeurs les plus présents"
             ]
 
     selected_chart = st.selectbox("Sélectionnez le graphique à afficher", options)
 
 
-    #if selected_chart == "Nombre ce films par genre (type Movie)":
+    if selected_chart == "Nombre ce films par genre (type Movie)":
 
         # ********************************************************
         # Nombre ce films par genre (type Movie) - Claudette
         # ********************************************************
 
-            
+            # Comptez le nombre de films par genre
+            genre_counts = df_imdb_filmUnik['imdb_genres'].value_counts().sort_values(ascending=False)
+
+            # Créer un graphique à barres avec Plotly Express
+            fig1 = px.bar(x=genre_counts.index, y=genre_counts.values, labels={'x': 'Genre', 'y': 'Nombre de Films'},
+                        title="Nombre de Films par Genre (Type: 'movie') - 1950 - 2023", 
+                        text=genre_counts.values, orientation='v')
+
+            # Personnaliser le graphique
+            fig1.update_layout(xaxis=dict(tickangle=-45), showlegend=False)
+
+            # Afficher le graphique
+            st.plotly_chart(fig1)
             
 
         # ********************************************************
         # Durée moyenne Durée moyenne des films en fonction de leur date de sortie - Claudette
         # ********************************************************
 
-    #elif selected_chart == "Durée moyenne Durée moyenne des films en fonction de leur date de sortie":
+    elif selected_chart == "Durée moyenne Durée moyenne des films en fonction de leur date de sortie":
 
 
-            #
+            # Calculer la moyenne de la durée des films par année
+            average_runtimes = df_imdb_filmUnik.groupby('imdb_startYear')['imdb_runtimeMinutes'].mean().reset_index()
+
+            # Créer un graphique en ligne avec Plotly Express
+            fig2 = px.line(average_runtimes, x='imdb_startYear', y='imdb_runtimeMinutes', 
+                        labels={'imdb_startYear': 'Année de sortie', 'imdb_runtimeMinutes': 'Moyenne de la durée (en min)'},
+                        title="Durée moyenne des films en fonction de leur date de sortie - 1950 - 2023")
+
+            # Personnaliser le graphique
+            fig2.update_layout(xaxis=dict(tickangle=-45))
+
+            # Afficher le graphique
+            st.plotly_chart(fig2)
 
 
         # ********************************************************
         # Nombre de films sortis par année de sortie - Claudette
         # ********************************************************
 
-    #elif selected_chart == "Nombre de films sortis par année de sortie":
+    elif selected_chart == "Nombre de films sortis par année de sortie":
 
-            #
+            # Utilise Plotly Express pour créer un graphique en barres
+            fig3 = px.histogram(df_imdb_filmUnik, x='imdb_startYear', title="Nombre de films sortis par année de sortie - 1950 - 2023",
+                                labels={'imdb_startYear': 'Année de sortie', 'count': 'Nombre de films'},
+                                color_discrete_sequence=['skyblue'])
+
+            # Personnalisation des axes
+            fig3.update_layout(xaxis=dict(tickangle=-45))
+
+            # Afficher le graphique
+            st.plotly_chart(fig3)
 
 
         # ********************************************************
         # Top 10 des réalisateurs les mieux cotés - Claudette
         # ********************************************************
 
-    #elif selected_chart == "Top 10 des réalisateurs les mieux cotés":
+    elif selected_chart == "Top 10 des réalisateurs les mieux cotés":
 
-            #
+            # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+            # bdd directeur unique
+            link2 = "df_imdb_DirUnik.parquet"
+            #link2 ="https://drive.google.com/file/d/13cZwpuJpoeLPIImg7zQ3TbSqcn7zHqtZ/view?usp=sharing"
+            df_imdb_DirUnik = pd.read_parquet(link2)
+
+
+            # Créez un DataFrame pour les réalisateurs les mieux cotés par décennie
+            top_directors_by_decade = (
+                df_imdb_DirUnik.groupby(['imdb_primaryName', 'imdb_decade'])
+                .agg({'imdb_averageRating': 'mean', 'imdb_numVotes': 'sum'})
+                .reset_index()
+            )
+
+            # Sélectionnez les décennies uniques et triez-les par ordre croissant
+            unique_decades = sorted(top_directors_by_decade['imdb_decade'].unique())
+
+            # Sélectionnez la décennie avec un widget selectbox
+            selected_decade = st.selectbox("Sélectionnez une décennie", unique_decades)
+
+            # Filtrer le DataFrame pour la décennie sélectionnée
+            if selected_decade:
+                selected_decade_data = top_directors_by_decade[top_directors_by_decade['imdb_decade'] == selected_decade]
+                # Afficher les 10 réalisateurs les mieux cotés par décennie
+                top_directors_decade = selected_decade_data.sort_values(by='imdb_averageRating', ascending=False).head(10)
+            else:
+                top_directors_decade = pd.DataFrame()
+
+            # Utilisez Plotly Express pour créer un graphique à barres
+            fig4 = px.bar(top_directors_decade, x='imdb_primaryName', y='imdb_averageRating',
+                        title=f'Top 10 des réalisateurs les mieux cotés dans les années {selected_decade}' if selected_decade else 'Sélectionnez une décennie',
+                        labels={'imdb_primaryName': 'Réalisateurs', 'imdb_averageRating': 'Note moyenne'})
+
+            # Personnalisez les axes
+            fig4.update_layout(xaxis=dict(tickangle=-45))
+
+            # Affichez le graphique
+            st.plotly_chart(fig4)
 
 
         # ********************************************************
         # Top 10 des réalisateurs les plus productifs - Claudette
         # ********************************************************
 
-    #elif selected_chart == "Top 10 des réalisateurs les plus productifs":
+    elif selected_chart == "Top 10 des réalisateurs les plus productifs":
 
-                #
+                # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+                # bdd directeur unique
+                link2 = "df_imdb_DirUnik.parquet"
+                #link2 ="https://drive.google.com/file/d/13cZwpuJpoeLPIImg7zQ3TbSqcn7zHqtZ/view?usp=sharing"
+                df_imdb_DirUnik = pd.read_parquet(link2)
+
+                top_directors_by_decade = df_imdb_DirUnik
+
+                # Créez un DataFrame pour le nombre de films par réalisateur et décennie
+                top_directors_by_decade = (
+                    df_imdb_DirUnik.groupby(['imdb_primaryName', 'imdb_decade'])
+                    .size()
+                    .reset_index(name='Nombre de films')
+                )
+
+                # Sélectionnez les décennies uniques et triez-les par ordre croissant
+                unique_decades = sorted(top_directors_by_decade['imdb_decade'].unique())
+
+                # Sélectionnez la décennie avec un widget selectbox
+                selected_decade = st.selectbox("Sélectionnez une décennie", unique_decades)
+
+                # Filtrer le DataFrame pour la décennie sélectionnée
+                if selected_decade:
+                    selected_decade_data = top_directors_by_decade[top_directors_by_decade['imdb_decade'] == selected_decade]
+                    # Afficher le top 10 par décennie
+                    top_directors_decade = selected_decade_data.sort_values(by='Nombre de films', ascending=False).head(10)
+                else:
+                    top_directors_decade = pd.DataFrame()
+
+                # Utilisez Plotly Express pour créer un graphique à barres
+                fig5 = px.bar(top_directors_decade, x='imdb_primaryName', y='Nombre de films',
+                            title=f'Top 10 des réalisateurs avec le plus grand nombre de films dans les années {selected_decade}' if selected_decade else 'Sélectionnez une décennie',
+                            labels={'imdb_primaryName': 'Réalisateurs', 'Nombre de films': 'Nombre de films'})
+
+                # Personnalisez les axes
+                fig5.update_layout(xaxis=dict(tickangle=-45))
+
+                # Affichez le graphique
+                st.plotly_chart(fig5)
 
 
 
@@ -361,13 +441,13 @@ elif page == pages[2]:
         # Best_movie_decade - Meilleur film par décennie - Julien
         # ********************************************************
 
-    if selected_chart == "Meilleur film par décennie":
+    elif selected_chart == "Meilleur film par décennie":
 
         # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         # bdd Best_movie_decade
-            link3 = "Best_movie_decade.csv"
+            link3 = "Best_movie_decade.parquet"
             #link3 ="https://drive.google.com/file/d/1rAAo4UnSGfz0RwbuEePZMH5VELxjTljL/view?usp=sharing"
-            Best_movie_decade = pd.read_csv(link3)
+            Best_movie_decade = pd.read_parquet(link3)
 
             # Convertir la colonne 'startYear' en chaînes de caractères (str) avant d'utiliser .str.extract()
             Best_movie_decade['startYear'] = Best_movie_decade['startYear'].astype(str)
@@ -566,16 +646,68 @@ elif page == pages[2]:
         # ********************************************************
 
 
-    #elif selected_chart == "Acteurs, Actrices & Directeurs les plus présents":
+    elif selected_chart == "Acteurs, Actrices & Directeurs les plus présents":
 
-        #
+        # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+        # bdd Acteurs les plus présents
+        link5 = "gbV6Actors.parquet"
+        # link5 ="https://drive.google.com/file/d/128Si_11-jsECEYZsopYDcJaJMG4eH6tx/view?usp=sharing"
+        gbV6Actors = pd.read_parquet(link5)
+
+        # Interface utilisateur avec Streamlit
+        st.subheader("**Analyse de Période pour les Acteurs, Actrices & Directeurs**")
+
+        # Saisie des valeurs par l'utilisateur avec des widgets interactifs
+        annee1 = st.slider("Saisir l'année de début", min_value=1950, max_value=2022, value=1950)
+        annee2 = st.slider("Saisir l'année de fin", min_value=1950, max_value=2022, value=2022)
+        genre = st.selectbox("Saisir la catégorie", [''] + list(gbV6Actors['category'].unique()))
+
+
+        # Fonction pour delimiter les périodes
+        def periode_delimiter(annee1, annee2, genre):
+            # Filtrer les données en fonction des critères
+            periode = gbV6Actors.loc[
+                (gbV6Actors['decade'] >= annee1)
+                & (gbV6Actors['decade'] < annee2)
+                & (gbV6Actors['category'] == genre),
+                'primaryName'
+            ]
+
+            # Créer un DataFrame avec le décompte des valeurs et convertir 'primaryName' en chaînes de caractères
+            df = pd.DataFrame({'primaryName': periode.value_counts(sort=True).head(5).index, 'nb_de_film': periode.value_counts(sort=True).head(5).values})
+
+            # Essayer de convertir la colonne 'primaryName' en chaînes de caractères
+            try:
+                df['primaryName'] = df['primaryName'].astype(str)
+            except Exception as e:
+                # Afficher l'erreur et les valeurs problématiques
+                st.error(f"Erreur lors de la conversion primaryName en str : {e}")
+                st.write("Valeurs problématiques dans la colonne 'primaryName' lors de la conversion primaryName en str :", df[df['primaryName'].apply(lambda x: not isinstance(x, str))])
+
+            # Fusionner avec les données additionnelles
+            actors_KFT = gbV6Actors.loc[gbV6Actors.KFT1 == gbV6Actors.originalTitle, ['KFT1', 'originalTitle', 'primaryName', 'age']]
+
+            # Remplir les valeurs manquantes
+            actors_KFT['KFT1'] = actors_KFT['KFT1'].fillna('Inconnu')
+            actors_KFT['age'] = actors_KFT['age'].fillna('Inconnu')
+
+            # Renommer les colonnes pour éviter les conflits lors de la fusion
+            actors_KFT = actors_KFT.rename(columns={'primaryName': 'primaryName_KFT', 'age': 'age_KFT', 'KFT1': 'KFT1'})
+
+            # Effectuer la fusion en spécifiant un suffixe pour les colonnes en conflit
+            df_final = pd.merge(df, actors_KFT, how='left', left_on=['primaryName'], right_on=['primaryName_KFT'], suffixes=('_df', '_actors_KFT'))
+
+            # Renommer les colonnes finales
+            df_final = df_final[['primaryName', 'nb_de_film', 'age_KFT', 'KFT1']].rename(columns={'primaryName': 'Name', 'age_KFT' : 'Age', 'KFT1': 'Connu_pour_ces_films'})
+
+            return df_final
 
 
         # Appeler la fonction avec les paramètres sélectionnés par l'utilisateur
-        # resultat = periode_delimiter(annee1, annee2, genre)
+        resultat = periode_delimiter(annee1, annee2, genre)
 
         # Afficher le résultat final
-        # st.dataframe(resultat)
+        st.dataframe(resultat)
 
 
 
