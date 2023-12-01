@@ -24,22 +24,30 @@ import random
 st.set_page_config(
     page_title = "Projet 2",
     page_icon = ":movie_camera:",
-    layout = "wide"
+    layout = "wide",
+    )
+
+
+# cacher les menus de streamlit
+hide_streamlit_style = """
+                <style> div[data-testid="stToolbar"] {visibility: hidden; height: 0%; position: fixed;}
+                div[data-testid="stDecoration"] {visibility: hidden; height: 0%; position: fixed;}
+                div[data-testid="stStatusWidget"] {visibility: hidden; height: 0%; position: fixed;}
+                #MainMenu {visibility: hidden; height: 0%;}
+                header {visibility: hidden; height: 0%;}
+                footer {visibility: hidden; height: 0%;}
+                </style> """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+
+st.markdown(
+    '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">',
+    unsafe_allow_html=True
 )
 
-# :movie_camera:
-# :film_frames:
-# :clapper:
-# :chart_with_upwards_trend:
-# :chart_with_downwards_trend:
-# :bar_chart:
-# :film_projector:
-# :e-mail:
-# :email:
-# :memo:
 
 # Changer le répertoire de travail pour qu'il corresponde à votre situation en local
-# os.chdir(r"C:\Users\cbrun\Desktop\WCS\Streamlit")
+#os.chdir(r"C:\Users\cbrun\Desktop\WCS\Streamlit")
 
 image = Image.open('cinema.jpg.webp')
 st.sidebar.image(image, use_column_width=True) #caption="Description de l'image"
@@ -47,11 +55,138 @@ st.sidebar.image(image, use_column_width=True) #caption="Description de l'image"
 # barre de navigation vertical
 st.sidebar.title("Sommaire")
 
-pages = ["Accueil","Contexte du projet ", "Statistiques de films", "Moteur de recommandations de films", "Alerte"]
+# liste des pages 
+pages = ["Projet 2", "Accueil", "Statistiques de films", "Moteur de recommandations de films", "Alerte"]
 
-page = st.sidebar.radio("Aller vers la page :", pages)
+#page = st.sidebar.radio("Aller vers la page :", pages)
+page = st.sidebar.radio("", pages)
+
+#<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3498DB;">
 
 
+
+
+# -----------------------------------------------------------
+# -----------------------------------------------------------
+############################################
+#### menu Projet 2
+############################################
+
+if page == pages[0]:
+
+
+    st.markdown('<h1 id="section_projet" style="color: #BD4BFF; text-align: center;">Projet 2</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="color: #BD4BFF; text-align: center;">Système de recommandation de films</h1>', unsafe_allow_html=True)
+
+    st.markdown("---")
+
+    # declaration 2 colonnes
+    col1, col2 = st.columns(2)
+    col1.subheader("Résumé du projet")
+    col2.subheader("Equipe ayant travaillé sur le projet")
+
+
+    # Création de la colonne principale
+    main_col = st.columns(2)
+
+    # Contenu de la première sous-colonne de la première colonne principale
+    sub_col1_main_col1 = main_col[0].columns(1)[0]
+
+    sub_col1_main_col1.write("Durée : du 18/10/2023 au 1/12/2023 - 7 semaines")
+    sub_col1_main_col1.write("Budget : 0 €")
+
+    # Contenu de la deuxième sous-colonne de la première colonne principale
+    sub_col2_main_col1, sub_col3_main_col1 = main_col[0].columns(2)
+
+    # ...
+
+    # Diviser la deuxième sous-colonne en 3 sous-colonnes de la deuxième colonne principale
+    sub_col1_main_col2, sub_col2_main_col2, sub_col3_main_col2 = main_col[1].columns(3)
+
+    # Sous-colonne 1
+    sub_col1_main_col2.write("Claudette")
+    image = Image.open('claudette.png')
+    sub_col1_main_col2.image(image, use_column_width=False) # , caption='Claudette'
+
+    # Sous-colonne 2
+    sub_col2_main_col2.write("Florence")
+    image = Image.open('florence.png')
+    sub_col2_main_col2.image(image, use_column_width=False) # , caption='Florence'
+
+    # Sous-colonne 3
+    sub_col3_main_col2.write("Julien")
+    image = Image.open('julien.png')
+    sub_col3_main_col2.image(image, use_column_width=False) # , caption='Julien'
+
+
+    st.markdown("---")
+
+    st.subheader("Contexte du projet")
+
+    # declaration 2 colonnes
+    col1, col2 = st.columns([4,1])
+
+    # col1, affiche le texte avec un espace réduit entre chaque phrase
+    col1.write(
+        "- Un cinéma en perte de vitesse situé dans la Creuse nous a contacté.\n"
+        "- Il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.\n"
+        "- Pour aller encore plus loin, il demande de créer un moteur de recommandations de films qui à terme, enverra des notifications aux clients via Internet.\n"
+        "- Pour l’instant, aucun client n’a renseigné ses préférences, Nous sommes dans une situation de **cold start**."
+    )
+
+
+    # Définir la largeur souhaitée de l'image gif
+    #image_width = 300
+
+    # Afficher l'image avec la largeur spécifiée
+    gif = "https://www.forum.arassocies.com/uploads/monthly_2022_01/178048511_Travoltasalledecine.gif.049a18b2b123c0170d165f2ee2a9499d.gif"
+    col2.image(gif, caption="Un cinema dans la Creuse", use_column_width=True)
+
+    st.markdown("---")
+
+    # declaration 2 colonnes
+    col1, col2 = st.columns([1, 4])
+
+    # col2, affiche l'image
+    image = Image.open('creuse.png')
+    col1.image(image, caption='carte de france avec focus sur la creuse', use_column_width=True) 
+
+    col2.subheader("RESSOURCES")
+    col2.write(
+        "- Le client nous as donné une base de données de films basée sur la plateforme IMDb.\n"
+        "- elle est composé de 6 datasets (title.akas.tsv.gz, title.basics.tsv.gz, title.crew.tsv.gz, title.episode.tsv.gz, title.principals.tsv.gzv, title.ratings.tsv.gz, name.basics.tsv.gz \n"
+        "- Une base de données complémentaires venant de TMDB, contenant des données sur les pays des sociétés de production, le budget, les recettes et également un chemin vers les posters des films.\n"
+        "- les datasets sont très volumineux, il y a plus de 7M films et 10M acteurs référencés.\n"
+        "- La documentation expliquant brièvement la définition de chaque colonne et de chaque table\n"
+        "- Le client nous demande de récupérer les images des films pour les afficher dans l'interface de recommandation\n"
+        )
+
+    st.markdown("---")
+
+    # declaration 2 colonnes
+    col1, col2 = st.columns(2)
+
+    col1.subheader("ORGANISATION ET PLANNING")
+    col1.write("- Semaine 1 et 2 : Appropriation et première exploration des données \n" 
+               "- Semaine 3 et 4 : Jointures, filtres, nettoyage, recherche de corrélation \n"
+               "- Semaine 5 et 6 : Machine learning, recommandations \n"
+               "- Semaine 7 : Affinage, interface, présentation et Demo Day"
+               )
+
+    col2.subheader("PROCESS DE PRODUCTION")
+    col2.write(
+        "- Analyse exploratoire et nettoyage des BDD \n" 
+        "- Developpement d'un algorithme de machine learning pour la recommandation \n" 
+        "- Utilisation de l'API pour le moteur de recommandation \n" 
+        "- Developpement du site avec Streamit"
+        )
+
+    st.markdown("---")
+
+    # declaration 2 colonnes
+    col1, col2 = st.columns(2)
+    col1.subheader("OUTILS & TECHNOLOGIES UTILISES")
+    col1.write("VS Code, Pandas, Numpy, Plotly, Scikit-learn, Streamlit, API Tmdb")
 
 
 
@@ -61,12 +196,12 @@ page = st.sidebar.radio("Aller vers la page :", pages)
 #### menu page Accueil 
 ############################################
 
-if page == pages[0] :
+elif page == pages[1] :
 
-    #st.header('Bienvenue sur notre de moteur de recommandations de films')
-    
+
+
     st.markdown(
-    '<h1 style="color: #BD4BFF; text-align: center;">Bienvenue sur notre moteur de recommandations de films</h1>',
+    '<h1 id="section_accueil" style="color: #BD4BFF; text-align: center;">Bienvenue sur notre moteur de recommandations de films</h1>',
     unsafe_allow_html=True) 
 
     #st.write("### Accueil")
@@ -74,14 +209,13 @@ if page == pages[0] :
     st.markdown("---")
 
     st.subheader("Vous trouverez : ")
-    st.write(":memo: Une rubrique présentant le **contexte du projet**")
     st.write(":bar_chart: Une rubrique de **Statistiques de films** qui contient des statistiques sur les films (type, durée), acteurs (nombre de films, type de films).")
     st.write(":clapper: Une rubrique de **Recommandations de films** qui contient des un moteur de recommandation de films en fonction de plusieurs critères")
     st.write(":email: Une rubrique d'**alerte** qui contient un formulaire pour vous inscrire à nos alertes")
 
 
-    image = Image.open('image_accueil.png')
-    st.image(image, caption='mosaique d\'affiche de fims')
+    #image = Image.open('image_accueil.png')
+    #st.image(image, caption='mosaique d\'affiche de fims')
 
 
     # Define the API key globally
@@ -141,110 +275,21 @@ if page == pages[0] :
 # -----------------------------------------------------------
 # -----------------------------------------------------------
 ############################################
-#### menu page Contexte de la quête ####
-############################################
-
-elif page == pages[1] :
-
-    #st.header('Contexte du projet ')
-
-    #st.write("### Contexte du projet")
-    st.markdown(
-    '<h1 style="color: #BD4BFF; text-align: center;">Contexte du projet</h1>',
-    unsafe_allow_html=True)
-
-    st.markdown("---")
-
-    # declaration 2 colonnes
-    col1, col2 = st.columns(2)
-
-    # col1, affiche le texte
-    col1.write("Un cinéma en perte de vitesse situé dans la Creuse nous a contacté.")
-    col1.write("Il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux. ")
-    col1.write("Pour aller encore plus loin, il demande de créer un moteur de recommandations de films qui à terme, enverra des notifications aux clients via Internet.")
-    col1.write("Pour l’instant, aucun client n’a renseigné ses préférences, Nous sommes dans une situation de **cold start**. ")
-
-     col2, affiche l'image
-     image = Image.open('creuse.png')
-     col2.image(image, use_column_width=True, caption='carte de france avec focus sur la creuse')
-
-    # Afficher l'image avec la largeur spécifiée
-    gif = "https://www.forum.arassocies.com/uploads/monthly_2022_01/178048511_Travoltasalledecine.gif.049a18b2b123c0170d165f2ee2a9499d.gif"
-    col2.image(gif, caption="Un cinema dans la Creuse", use_column_width=True)
-
-
-    # declaration 2 colonnes
-    col1, col2 = st.columns(2)
-
-    # Définir la largeur souhaitée de l'image gif
-    image_width = 300
-
-    # Afficher l'image avec la largeur spécifiée
-    gif = "https://www.forum.arassocies.com/uploads/monthly_2022_01/178048511_Travoltasalledecine.gif.049a18b2b123c0170d165f2ee2a9499d.gif"
-    col1.image(gif, caption="Un cinema dans la Creuse", use_column_width=True)
-    width=image_width)
-
-    # declaration 2 colonnes
-    col1, col2 = st.columns(2)
-    
-    # col2, affiche l'image
-    image = Image.open('creuse.png')
-    col1.image(image, use_column_width=True, caption='carte de france avec focus sur la creuse')
-
-    st.write("\n")  # Ajoute un saut de ligne manuel
-
-    col2.write("Le client nous as donné une base de données de films basée sur la plateforme IMDb.")
-    col2.write("Une base de données complémentaires venant de TMDB, contenant des données sur les pays des boîtes de production, le budget, les recettes et également un chemin vers les posters des films.")
-
-    col2.write("Le client nous demand de récupérer les images des films pour les afficher dans l'interface de recommandation")
-
-    col2.write("Vous trouverez une analyse complète de la base de données dans la rubrique Statistiques de films")
-    #col2.write("Nous utiliserons des algorithmes de machine learning pour recommander des films en fonction de films qui ont été appréciés par le spectateur dans la rubrique Moteur de recommandation de films ")
-
-
-    st.subheader("**Equipe ayant travaillé sur le projet :** ")
-
-    # declaration 3 colonnes
-    col1, col2, col3 = st.columns(3)
-
-    # col 1
-    col1.write("Claudette")
-    image = Image.open('claudette.png')
-    col1.image(image, use_column_width=False) # , caption='Claudette'
-
-    # col 2
-    col2.write("Florence", align='center')
-    image = Image.open('florence.png')
-    col2.image(image, use_column_width=False) # , caption='Florence'
-
-    # col 3
-    col3.write("Julien", align='center')
-    image = Image.open('julien.png')
-    col3.image(image, use_column_width=False) # , caption='Julien'
-
-
-
-
-# -----------------------------------------------------------
-# -----------------------------------------------------------
-############################################
 #### menu page Statistiques de films 
 ############################################
 
 elif page == pages[2]:
 
-    #st.header('Moteur de recommandations de films')
-    #st.write("### Statistiques de films")
-    #st.header('Statistiques de la Base de données')
+
     st.markdown(
-    '<h1 style="color: #BD4BFF; text-align: center;">Statistiques de la Base de données</h1>',
+    '<h1 id="section_statistiques" style="color: #BD4BFF; text-align: center;">Statistiques de la Base de données</h1>',
     unsafe_allow_html=True)
 
     st.markdown("---")
 
     # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
     # bdd films unique
-    link1 = "df_imdb_filmUnik.parquet"
+    link1 = "dataset/df_imdb_filmUnik.parquet"
     #link1 = "https://drive.google.com/file/d/1EZOyDpi_o7OXDQvpUjC9d9rEU_sl7HHi/view?usp=sharing"
     df_imdb_filmUnik = pd.read_parquet(link1)
 
@@ -300,7 +345,7 @@ elif page == pages[2]:
 
             # Afficher le graphique
             st.plotly_chart(fig1)
-            
+
 
         # ********************************************************
         # Durée moyenne Durée moyenne des films en fonction de leur date de sortie - Claudette
@@ -350,7 +395,7 @@ elif page == pages[2]:
 
             # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
             # bdd directeur unique
-            link2 = "df_imdb_DirUnik.parquet"
+            link2 = "dataset/df_imdb_DirUnik.parquet"
             #link2 ="https://drive.google.com/file/d/13cZwpuJpoeLPIImg7zQ3TbSqcn7zHqtZ/view?usp=sharing"
             df_imdb_DirUnik = pd.read_parquet(link2)
 
@@ -396,7 +441,7 @@ elif page == pages[2]:
 
                 # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
                 # bdd directeur unique
-                link2 = "df_imdb_DirUnik.parquet"
+                link2 = "dataset/df_imdb_DirUnik.parquet"
                 #link2 ="https://drive.google.com/file/d/13cZwpuJpoeLPIImg7zQ3TbSqcn7zHqtZ/view?usp=sharing"
                 df_imdb_DirUnik = pd.read_parquet(link2)
 
@@ -445,7 +490,7 @@ elif page == pages[2]:
 
         # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         # bdd Best_movie_decade
-            link3 = "Best_movie_decade.parquet"
+            link3 = "dataset/Best_movie_decade.parquet"
             #link3 ="https://drive.google.com/file/d/1rAAo4UnSGfz0RwbuEePZMH5VELxjTljL/view?usp=sharing"
             Best_movie_decade = pd.read_parquet(link3)
 
@@ -503,9 +548,9 @@ elif page == pages[2]:
 
         # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         # bdd Top_10_genres_global
-            link4 = "Top_10_genres_global.csv"
+            link4 = "dataset/Top_10_genres_global.parquet"
             #link3 ="https://drive.google.com/file/d/1faBYvqfN8O_HBteOKUxZ-EEafx1Dv9io/view?usp=sharing"
-            Top_10_genres_global = pd.read_csv(link4)
+            Top_10_genres_global = pd.read_parquet(link4)
 
             # Compter les éléments uniques dans chaque colonne 'genre1', 'genre2', 'genre3'
             genre1_counts = Top_10_genres_global['genre1'].value_counts()
@@ -545,9 +590,9 @@ elif page == pages[2]:
 
         # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         # bdd top_10_genres_decade
-            link4 = "Top_10_genres_global.csv"
+            link4 = "dataset/Top_10_genres_global.parquet"
             #link4 ="https://drive.google.com/file/d/1faBYvqfN8O_HBteOKUxZ-EEafx1Dv9io/view?usp=sharing"
-            top10decade = pd.read_csv(link4)
+            top10decade = pd.read_parquet(link4)
 
             # Convertir la colonne 'startYear' en type entier (si elle n'est pas déjà de ce type)
             top10decade['startYear'] = top10decade['startYear'].astype(str).str.extract(r'(\d{4})')
@@ -650,7 +695,7 @@ elif page == pages[2]:
 
         # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         # bdd Acteurs les plus présents
-        link5 = "gbV6Actors.parquet"
+        link5 = "dataset/gbV6Actors.parquet"
         # link5 ="https://drive.google.com/file/d/128Si_11-jsECEYZsopYDcJaJMG4eH6tx/view?usp=sharing"
         gbV6Actors = pd.read_parquet(link5)
 
@@ -720,14 +765,13 @@ elif page == pages[2]:
 
 elif page == pages[3]:
 
+
     # Stocker la valeur initiale de title_query
     initial_title_query = ""
-
 
     # Initialiser la session avec un dictionnaire vide si nécessaire
     if 'session_state' not in st.session_state:
         st.session_state.session_state = {}
-
 
         # Initialiser title_query avec la valeur initiale
         st.session_state.title_query = initial_title_query
@@ -736,7 +780,7 @@ elif page == pages[3]:
     #print("Initial title_query:", st.session_state.title_query)
 
     #st.header('Moteur de recommandations de films')
-    st.markdown('<h1 style="color: #BD4BFF; text-align: center;">Moteur de recommandations de films</h1>',
+    st.markdown('<h1 id="section_recommandations" style="color: #BD4BFF; text-align: center;">Moteur de recommandations de films</h1>',
                 unsafe_allow_html=True)
 
     st.markdown("---")
@@ -841,6 +885,7 @@ elif page == pages[3]:
 
     # Autocomplétion basée sur la requête de l'utilisateur
     if title_query:
+
         # Obtenez les options d'autocomplétion en utilisant la fonction
         movie_titles = get_movie_titles(title_query)
 
@@ -853,8 +898,10 @@ elif page == pages[3]:
 
     # Vérifiez si le titre est vide ou pas
     if title:
+
         # Obtenez les détails du film en français (code de langue 'fr-FR')
         movie_details = get_movie_details(title, language='fr-FR')
+
 
         # Affichez les informations sur le film
         if movie_details:
@@ -958,10 +1005,8 @@ elif page == pages[3]:
 
 elif page == pages[4]:
 
-    #st.header('Moteur de recommandations de films')
-    #st.write("### Alerte")
-    #st.header('Alerte')
-    st.markdown('<h1 style="color: #BD4BFF; text-align: center;">Pour rester informé des nouveautés</h1>', unsafe_allow_html=True)
+
+    st.markdown('<h1 id="section_alerte" style="color: #BD4BFF; text-align: center;">Pour rester informé des nouveautés</h1>', unsafe_allow_html=True)
 
     st.markdown("---")
 
@@ -1050,5 +1095,4 @@ elif page == pages[4]:
 
     if __name__ == "__main__":
         main()
-
 
